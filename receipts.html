@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recibos Generados</title>
+</head>
+<body>
+    <h1>Recibos Generados</h1>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Recibo N°</th>
+            <th>Recibí de</th>
+            <th>Monto</th>
+            <th>Forma de Pago</th>
+            <th>Concepto</th>
+            <th>Saldo</th>
+        </tr>
+        {% for receipt in receipts %}
+        <tr>
+            <td>{{ receipt.date }}</td>
+            <td>{{ receipt.receipt_number }}</td>
+            <td>{{ receipt.received_from }}</td>
+            <td>{{ receipt.amount }}</td>
+            <td>{{ receipt.payment_method }}</td>
+            <td>{{ receipt.concept }}</td>
+            <td>{{ receipt.saldo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="/">Volver al Generador de Recibos</a>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Recibos</title>
+</head>
+<body>
+    <h1>Generador de Recibos</h1>
+    <form action="/generate" method="post">
+        <label for="date">Fecha:</label>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="receipt_number">Recibo N°:</label>
+        <input type="text" id="receipt_number" name="receipt_number" required><br><br>
+
+        <label for="received_from">Recibí de:</label>
+        <input type="text" id="received_from" name="received_from" required><br><br>
+
+        <label for="amount">La suma de:</label>
+        <input type="text" id="amount" name="amount" required><br><br>
+
+        <label for="payment_method">Forma de pago:</label>
+        <select id="payment_method" name="payment_method" required>
+            <option value="Nequi">Nequi</option>
+            <option value="Efectivo">Efectivo</option>
+            <option value="Otro">Otro</option>
+        </select><br><br>
+
+        <label for="concept">Por el concepto de:</label>
+        <input type="text" id="concept" name="concept" required><br><br>
+
+        <label for="saldo">Saldo:</label>
+        <input type="text" id="saldo" name="saldo" required><br><br>
+
+        <input type="submit" value="Generar Recibo">
+    </form>
+    <br>
+    <a href="/receipts">Ver Recibos Generados</a>
+</body>
+</html>
