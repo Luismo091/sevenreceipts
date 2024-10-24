@@ -3,39 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generador de Recibos</title>
+    <title>Recibos Generados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        th {
+            background-color: #3498db;
+            color: #ffffff;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f8f8;
+        }
+        tr:hover {
+            background-color: #e8f4f8;
+            transition: background-color 0.3s ease;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .back-link:hover {
+            background-color: #2980b9;
+        }
+        @media (max-width: 600px) {
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 8px 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Generador de Recibos</h1>
-    <form action="/generate" method="post">
-        <label for="date">Fecha:</label>
-        <input type="date" id="date" name="date" required><br><br>
-
-        <label for="receipt_number">Recibo N°:</label>
-        <input type="text" id="receipt_number" name="receipt_number" required><br><br>
-
-        <label for="received_from">Recibí de:</label>
-        <input type="text" id="received_from" name="received_from" required><br><br>
-
-        <label for="amount">La suma de:</label>
-        <input type="text" id="amount" name="amount" required><br><br>
-
-        <label for="payment_method">Forma de pago:</label>
-        <select id="payment_method" name="payment_method" required>
-            <option value="Nequi">Nequi</option>
-            <option value="Efectivo">Efectivo</option>
-            <option value="Otro">Otro</option>
-        </select><br><br>
-
-        <label for="concept">Por el concepto de:</label>
-        <input type="text" id="concept" name="concept" required><br><br>
-
-        <label for="saldo">Saldo:</label>
-        <input type="text" id="saldo" name="saldo" required><br><br>
-
-        <input type="submit" value="Generar Recibo">
-    </form>
-    <br>
-    <a href="/receipts">Ver Recibos Generados</a>
+    <h1>Recibos Generados</h1>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Recibo N°</th>
+                    <th>Recibí de</th>
+                    <th>Monto</th>
+                    <th>Forma de Pago</th>
+                    <th>Concepto</th>
+                    <th>Saldo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for receipt in receipts %}
+                <tr>
+                    <td>{{ receipt.date }}</td>
+                    <td>{{ receipt.receipt_number }}</td>
+                    <td>{{ receipt.received_from }}</td>
+                    <td>{{ receipt.amount }}</td>
+                    <td>{{ receipt.payment_method }}</td>
+                    <td>{{ receipt.concept }}</td>
+                    <td>{{ receipt.saldo }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <a href="/" class="back-link">Volver al Generador de Recibos</a>
 </body>
 </html>
